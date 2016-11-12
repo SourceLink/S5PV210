@@ -34,7 +34,7 @@ clean_bss:				/* 清除bss也就相当于把为定义的全剧变量初始化为
 
 	mov	r2, #0
 clean_loop:
-	str	r2, [r0], #4
+	str	r2, [r0], #4		/* 对bss_start 到bss_end 段 内存清零 */
 	
 	cmp	r0, r1			/* 比较bss_start和bss_end的地址 bss_start的地址在递增 */
 	bne	clean_loop		/* 不相等则跳转 */
