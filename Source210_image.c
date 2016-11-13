@@ -75,8 +75,8 @@ main(int argc,char *argv[])
 		checksum += buffer;
 	}
 	
-	/* 写进缓冲区 */
-	*(volatile unsigned char*)(ucBuffer + 8) = checksum;
+	/* 写进缓冲区注意强制类型转化为int*不是char* */
+	*(volatile unsigned int*)(ucBuffer + 8) = checksum;
 	
 	if((pfile = fopen(argv[2],"wb")) == NULL){
 		printf("fopen file error");
