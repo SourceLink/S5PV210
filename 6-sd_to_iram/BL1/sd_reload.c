@@ -27,7 +27,7 @@ void copy_code_to_iram(void)
 	else if (V210_SDMMC_BASE == 0xEB200000)	/* 通道1 */
 		ch  = 1;
 	/* 注意扇区大小，bl1代码16k sd卡一个扇区大小512Byte */
-	copy_bl2(ch, 40, 10, (u32*)0xD0022800, 0); 
+	copy_bl2(ch, 20, 10, (u32*)0xD0022800, 0); 
 }
 
 
