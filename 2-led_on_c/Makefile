@@ -1,4 +1,4 @@
-led_on_c.bin : start.o	led_on_c.o
+led_on_c.bin : start.o led_on_c.o
 	arm-linux-ld -Ttext 0x0 -g $^ -o led_on_c.elf
 	arm-linux-objcopy -O binary -S led_on_c.elf $@ 
 	arm-linux-objdump -D led_on_c.elf > led_on_c.dis

@@ -8,7 +8,7 @@ _start:
 
 
 	ldr sp,=0xD0037D80	/* 设置栈指针 */
-
+	
 	bl main			/* pc = main,lr = bl后的指令,位置无关跳转 */
 	;ldr pc, =main		/* 位置相关 */ 
 halt:
