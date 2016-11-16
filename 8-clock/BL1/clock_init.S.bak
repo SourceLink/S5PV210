@@ -1,0 +1,34 @@
+/* 时钟控制器基地址 */
+#define ELFIN_CLOCK_POWER_BASE		0xE0100000	
+
+/* 时钟相关的寄存器相对时钟控制器基地址的偏移值 */
+#define APLL_LOCK_OFFSET		0x00		
+#define MPLL_LOCK_OFFSET		0x08
+#define EPLL_LOCK_OFFSET		0x10		
+#define VPLL_LOCK_OFFSET		0x20
+
+#define APLL_CON0_OFFSET		0x100
+#define APLL_CON1_OFFSET		0x104
+#define MPLL_CON_OFFSET			0x108
+#define EPLL_CON0_OFFSET		0x110
+#define EPLL_CON1_OFFSET		0x114
+#define EPLL_CON_OFFSET		  0x120
+
+#define CLK_SRC0_OFFSET			0x200
+#define CLK_SRC1_OFFSET			0x204
+#define CLK_SRC2_OFFSET			0x208
+#define CLK_SRC3_OFFSET			0x20c
+#define CLK_SRC4_OFFSET			0x210
+#define CLK_SRC5_OFFSET			0x214
+#define CLK_SRC6_OFFSET			0x218
+#define CLK_SRC_MASK0_OFFSET	0x280
+#define CLK_SRC_MASK1_OFFSET	0x284
+
+#define CLK_DIV0_OFFSET			0x300
+#define CLK_DIV1_OFFSET			0x304
+#define CLK_DIV2_OFFSET			0x308
+#define CLK_DIV3_OFFSET			0x30c
+#define CLK_DIV4_OFFSET			0x310
+#define CLK_DIV5_OFFSET			0x314
+#define CLK_DIV6_OFFSET			0x318
+#define CLK_DIV7_OFFSET			0x31c

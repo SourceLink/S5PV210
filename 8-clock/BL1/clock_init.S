@@ -56,8 +56,8 @@
 
 #define APLL_SEL			1
 #define	MPLL_SEL			1
-#define EPLL_SEL			1
-#define VPLL_SEL			1
+#define EPLL_SEL			0
+#define VPLL_SEL			0
 #define MUX_MSYS_SEL			0
 #define MUX_DSYS_SEL			0
 #define	MUX_PSYS_SEL			0
@@ -68,10 +68,7 @@
 clock_init : 
 
 	ldr	r0, =ELFIN_CLOCK_POWER_BASE
-
-	ldr	r1, =0x0
-	str	r1, [r0,#CLK_SRC0_OFFSET]
-		
+	
 	/* step1 */
 	ldr	r1, =0x0000FFFF					/* 设置锁定时间 */
 	str	r1, [r0, #APLL_LOCK_OFFSET]
@@ -87,7 +84,7 @@ clock_init :
 	str	r1, [r0, #APLL_CON0_OFFSET]
 
 	ldr	r1, =((MPLL_SDIV) | (MPLL_PDIV << 8) | (MPLL_MDIV << 16) | (MPLL_ENABLE << 31))
-	str	r1, [r0, #MPLL_CON_OFFSET]			/* 设置起震系数 */
+	str	r1, [r0, #MPLL_CON_OFFSET]
 
 	/* step4 */
 	ldr	r1, =((APLL_SEL) | (MPLL_SEL << 4) | (EPLL_SEL << 8) | (VPLL_SEL << 12) | (MUX_MSYS_SEL << 16) | (MUX_DSYS_SEL << 20) |	  \

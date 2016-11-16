@@ -20,8 +20,14 @@ main(void)
 	GPC0DAT |= (1 << 3); 	/* set state high */
 	GPC0DAT |= (1 << 4);   	/* set state high */
 
-		GPC0DAT |= (1 << 4);   	/* set state high */
-		GPC0DAT |= (1 << 3); 	/* set state high */
 	while(1) {
+		delay(0x300000);
+	
+		GPC0DAT |= (1 << 4);   	/* set state high */
+		GPC0DAT &= ~(1 << 3);    /* set state low */
+		delay(0x300000);
+	
+		GPC0DAT |= (1 << 3); 	/* set state high */
+		GPC0DAT &= ~(1 << 4);   	/* set state low */
 	}
 }

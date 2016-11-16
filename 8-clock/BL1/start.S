@@ -12,8 +12,6 @@ _start :
 
 	ldr	sp, =0xD0037D80	
 
-	bl	clock_init		/* 初始化时钟 */	
-
 	bl	mem_init		/* 初始化内存 */	
 	
 	bl	copy_code_to_iram	/* 代码从sd卡拷贝到iram */
