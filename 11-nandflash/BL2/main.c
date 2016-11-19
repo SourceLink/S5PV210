@@ -22,11 +22,11 @@ void main()
 	}
 	uart_senddata('\n');
 	
-	nand_erase(0x80000);			/* 擦除以0x80000地址开始的一个块 */
+	nand_erase(0x00);			/* 擦除以0x80000地址开始的一个块 */
 	
-	nand_write_page((unsigned char*)0xD0020000, 0x80000);	/* 写入1页数据到0x80000地址 */
+	nand_write_page((unsigned char*)0xD0020000, 0x00);	/* 写入1页数据到0x80000地址 */
 	
-	nand_read_page(buf, 0x80000);			/* 从0x80000地址读取一页数据（顺序读） */
+	nand_read_page(buf, 0x00);			/* 从0x80000地址读取一页数据（顺序读） */
 	//nand_read_random(buf, 0x80000, 2048);	/* 从0x80000地址读取一页数据（随机读） */
 	
 	
