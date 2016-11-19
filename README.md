@@ -21,4 +21,6 @@ S5PV210
 
 9.简单的串口配置			------20161116
 
-10.利用va_start 和va_arg 实现简单的printf ------21061117
+10.利用va_start 和va_arg 实现简单的printf ------20161117
+
+11.nandflash裸机驱动实现把iram 拷贝到 nand------20161119
