@@ -40,7 +40,7 @@ clean_loop:
 	bne	clean_loop		/* 不相等则跳转 */
 
 run_on_iram:
-	ldr	pc, =main			/* pc = main,lr = bl后的指令 */
+	ldr	pc, =main		/* pc = main,lr = bl后的指令, ldr是位置相关指令 现在用的是main的链接地址在汇编后的地址为0xd240e4，刚好前面代码复制到了那个位置 ,bl位置无关指令 bl main 使用的是相对指令与链接地址无关  */
 
 halt:
 	b	halt			/* 死循环 */
