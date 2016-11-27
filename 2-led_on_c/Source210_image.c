@@ -4,7 +4,7 @@
 
 
 #define IMG_SIZE        16 * 1024
-#define HEAD_SIZE       16
+#define HEADER_SIZE       16
 
 int
 main(int argc,char *argv[])
@@ -49,7 +49,7 @@ main(int argc,char *argv[])
         fseek(pfile,0,SEEK_SET);
 
         /* 文件长度不得超过(16kb-16)个字节 */
-        if(binlen > (IMG_SIZE - HEAD_SIZE)){
+        if(binlen > (IMG_SIZE - HEADER_SIZE)){
                 printf("source bin is  > 16kByte\n");
                 fclose(pfile);
                 free(ucBuffer);
@@ -57,7 +57,7 @@ main(int argc,char *argv[])
         }
 
         /* read bin to memory */
-        if(fread(ucBuffer + HEAD_SIZE,1,binlen,pfile) != binlen){
+        if(fread(ucBuffer + HEADER_SIZE,1,binlen,pfile) != binlen){
                 printf("fread source bin error\n");
                 free(ucBuffer);
                 fclose(pfile);
@@ -67,24 +67,27 @@ main(int argc,char *argv[])
 	/* 关闭文件，不需要就关闭 */
         fclose(pfile);
 	
-	memcpy(ucBuffer,"SourcelinkSPV210",HEAD_SIZE);	
 
 	/* 求出校检合 */
-        for(i = 0;i <IMG_SIZE - HEAD_SIZE;i++){
-		buffer = (*(volatile unsigned char*)(ucBuffer + HEAD_SIZE + i));
+        for (i = 0; i < IMG_SIZE - HEADER_SIZE; i++) {
+		buffer = (*(volatile unsigned char*)(ucBuffer + HEADER_SIZE + i));
 		checksum += buffer;
 	}
 	
+	binlen += HEADER_SIZE; 
+	/* BL1 size */
+	*(volatile unsigned int*)ucBuffer = binlen;
 	/* 写进缓冲区 */
 	*(volatile unsigned int*)(ucBuffer + 8) = checksum;
 	
-	if((pfile = fopen(argv[2],"wb")) == NULL){
+	if ((pfile = fopen(argv[2],"wb")) == NULL) {
 		printf("fopen file error");
 		free(ucBuffer);
 		return -1;
 	}
+
 	/* 写入文件中 */
-	if(fwrite(ucBuffer,1,IMG_SIZE,pfile) != IMG_SIZE){
+	if (fwrite(ucBuffer,1,binlen,pfile) != binlen) {
 		printf("file fwrite error\n");
 		free(ucBuffer);
 		fclose(pfile);
