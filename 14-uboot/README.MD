@@ -5,3 +5,5 @@
 3.u-boot-2016.11-2.tar.bz2 -------->spl.bin移植
 
 4.u-boot-2016.11-3.tar.bz2 -------->u-boot.bin移植 
+
+5.u-boot-2016.11-4.tar.bz2 -------->移植nandflash
