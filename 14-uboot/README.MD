@@ -7,3 +7,5 @@
 4.u-boot-2016.11-3.tar.bz2 -------->u-boot.bin移植 
 
 5.u-boot-2016.11-4.tar.bz2 -------->移植nandflash
+
+6.u-boot-2016.11-5.tar.bz2 -------->移植dm9000
