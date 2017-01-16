@@ -1,0 +1,4 @@
+#!/bin/sh
+insmod cfbfillrect.ko 
+insmod cfbcopyarea.ko 
+insmod cfbimgblt.ko 
